@@ -1,0 +1,45 @@
+# Docker Compose configuration for Ancestry Cloud
+# This configuration sets up Next.js with SQLite database for production use
+
+services:
+  # Next.js application service
+  nextjs-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ancestry-cloud:latest
+    container_name: ancestry-cloud-container
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+      # Required for NextAuth.js - generate with: openssl rand -base64 32
+      - AUTH_SECRET=${AUTH_SECRET}
+      # Database configuration for SQLite
+      - DATABASE_URL=file:/data/db/dev.db
+    ports:
+      - "3000:3000"
+    volumes:
+      # Mount SQLite database directory for persistence
+      - sqlite-data:/data/db
+      # Uncomment the following line if you want tomount your .env file
+      # - ./production.env:/app/.env:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - app-network
+
+# Define named volumes for data persistence
+volumes:
+  sqlite-data:
+    driver: local
+
+# Define custom network for service communication
+networks:
+  app-network:
+    driver: bridge

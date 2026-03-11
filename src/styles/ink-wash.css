@@ -1,0 +1,2678 @@
+/**
+ * Ink-Wash Design System (水墨风格设计系统)
+ * Traditional Chinese ink-wash aesthetics for ancestral worship
+ * Buddhist influence: minimalist, respectful, serene
+ */
+
+/* ========================================
+   IMPORT NOTO SERIF SC (思源宋体)
+   ======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap');
+
+/* ========================================
+   CSS CUSTOM PROPERTIES
+   ======================================== */
+:root {
+  /* Ink Colors (墨色) - Representing respect and solemnity */
+  --ink-900: #0a0a0a;
+  --ink-800: #1a1a1a;
+  --ink-700: #262626;
+  --ink-600: #404040;
+  --ink-500: #525252;
+  --ink-400: #666666;
+  --ink-300: #888888;
+  --ink-200: #a3a3a3;
+  --ink-100: #d4d4d4;
+  --ink-50: #f5f5f5;
+
+  /* Rice Paper Colors (宣纸色) - Representing purity and tradition */
+  --paper-50: #fdfcfa;
+  --paper-100: #f8f4e9;
+  --paper-200: #f5f0e1;
+  --paper-300: #eeebe4;
+  --paper-400: #e5e0d4;
+  --paper-500: #d4cfc2;
+
+  /* Vermilion Colors (朱砂色) - Representing fortune and prosperity */
+  --vermilion-900: #7c2d1a;
+  --vermilion-800: #9c3d26;
+  --vermilion-700: #b9452b;
+  --vermilion-600: #c23b22;
+  --vermilion-500: #d35400;
+  --vermilion-400: #e74c3c;
+  --vermilion-300: #f1948a;
+  --vermilion-200: #f5b7b1;
+  --vermilion-100: #fadbd8;
+  --vermilion-50: #fdedec;
+
+  /* Gold/Brass Accent (金色) - For decorative elements */
+  --gold-600: #b8860b;
+  --gold-500: #daa520;
+  --gold-400: #ffd700;
+  --gold-300: #f0e68c;
+
+  /* Jade Green (翠色) - Optional accent for harmony */
+  --jade-600: #2e7d32;
+  --jade-500: #388e3c;
+  --jade-400: #43a047;
+
+  /* Shadcn/ui Theme Mapping */
+  --background: var(--paper-100);
+  --foreground: var(--ink-800);
+  --card: var(--paper-50);
+  --card-foreground: var(--ink-800);
+  --popover: var(--paper-50);
+  --popover-foreground: var(--ink-800);
+  --primary: var(--ink-800);
+  --primary-foreground: var(--paper-100);
+  --secondary: var(--paper-200);
+  --secondary-foreground: var(--ink-700);
+  --muted: var(--paper-200);
+  --muted-foreground: var(--ink-400);
+  --accent: var(--vermilion-600);
+  --accent-foreground: var(--paper-100);
+  --destructive: var(--vermilion-600);
+  --destructive-foreground: var(--paper-100);
+  --border: var(--paper-400);
+  --input: var(--paper-300);
+  --ring: var(--ink-400);
+  --radius: 0.375rem;
+}
+
+/* ========================================
+   DARK MODE (Optional - for future use)
+   ======================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--ink-900);
+    --foreground: var(--paper-100);
+    --card: var(--ink-800);
+    --card-foreground: var(--paper-100);
+    --popover: var(--ink-800);
+    --popover-foreground: var(--paper-100);
+    --primary: var(--paper-100);
+    --primary-foreground: var(--ink-900);
+    --secondary: var(--ink-700);
+    --secondary-foreground: var(--paper-100);
+    --muted: var(--ink-700);
+    --muted-foreground: var(--ink-300);
+    --accent: var(--vermilion-500);
+    --accent-foreground: var(--paper-100);
+    --destructive: var(--vermilion-600);
+    --destructive-foreground: var(--paper-100);
+    --border: var(--ink-600);
+    --input: var(--ink-700);
+    --ring: var(--ink-400);
+  }
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+body {
+  font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  line-height: 1.75;
+  letter-spacing: 0.025em;
+}
+
+/* ========================================
+   INK-WASH TYPOGRAPHY
+   ======================================== */
+.font-ink {
+  font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
+}
+
+.text-ink-heading {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--ink-900);
+}
+
+.text-ink-body {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--ink-700);
+}
+
+/* Vertical writing mode (traditional Chinese) */
+.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* ========================================
+   INK-WASH BORDERS
+   ======================================== */
+.border-ink {
+  border-color: var(--ink-200);
+  border-width: 1px;
+}
+
+.border-ink-thick {
+  border-color: var(--ink-400);
+  border-width: 2px;
+}
+
+.border-ink-double {
+  border-color: var(--ink-300);
+  border-width: 3px;
+  border-style: double;
+}
+
+/* Organic, hand-painted border effect */
+.border-ink-wash {
+  border: 1px solid var(--ink-200);
+  border-radius: 2px 4px 3px 5px;
+}
+
+/* Vermilion seal border */
+.border-seal {
+  border: 2px solid var(--vermilion-600);
+  border-radius: 4px;
+}
+
+/* ========================================
+   INK-WASH SHADOWS
+   ======================================== */
+.shadow-ink {
+  box-shadow:
+    0 1px 3px rgba(10, 10, 10, 0.08),
+    0 1px 2px rgba(10, 10, 10, 0.12);
+}
+
+.shadow-ink-lg {
+  box-shadow:
+    0 4px 6px rgba(10, 10, 10, 0.05),
+    0 2px 4px rgba(10, 10, 10, 0.08);
+}
+
+.shadow-ink-xl {
+  box-shadow:
+    0 10px 15px rgba(10, 10, 10, 0.05),
+    0 4px 6px rgba(10, 10, 10, 0.08);
+}
+
+/* Soft, diffused shadow like ink bleeding on paper */
+.shadow-ink-bleed {
+  box-shadow:
+    0 2px 8px rgba(10, 10, 10, 0.04),
+    0 4px 16px rgba(10, 10, 10, 0.02);
+}
+
+/* ========================================
+   INK-WASH BACKGROUNDS
+   ======================================== */
+.bg-paper {
+  background-color: var(--paper-100);
+}
+
+.bg-paper-gradient {
+  background: linear-gradient(
+    180deg,
+    var(--paper-50) 0%,
+    var(--paper-100) 50%,
+    var(--paper-200) 100%
+  );
+}
+
+.bg-ink-gradient {
+  background: linear-gradient(
+    180deg,
+    var(--ink-700) 0%,
+    var(--ink-800) 50%,
+    var(--ink-900) 100%
+  );
+}
+
+/* Subtle rice paper texture overlay */
+.bg-paper-texture {
+  background-color: var(--paper-100);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* ========================================
+   INK-WASH BUTTONS
+   ======================================== */
+.btn-ink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.5rem;
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  letter-spacing: 0.05em;
+  color: var(--paper-100);
+  background-color: var(--ink-800);
+  border: 1px solid var(--ink-700);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-ink:hover {
+  background-color: var(--ink-700);
+  box-shadow: 0 2px 4px rgba(10, 10, 10, 0.15);
+}
+
+.btn-ink:active {
+  background-color: var(--ink-900);
+  transform: translateY(1px);
+}
+
+.btn-ink-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.5rem;
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-800);
+  background-color: transparent;
+  border: 1px solid var(--ink-400);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-ink-outline:hover {
+  background-color: var(--paper-200);
+  border-color: var(--ink-600);
+}
+
+.btn-vermilion {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.5rem;
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  letter-spacing: 0.05em;
+  color: var(--paper-100);
+  background-color: var(--vermilion-600);
+  border: 1px solid var(--vermilion-700);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-vermilion:hover {
+  background-color: var(--vermilion-700);
+  box-shadow: 0 2px 4px rgba(194, 59, 34, 0.25);
+}
+
+.btn-vermilion-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.5rem;
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  letter-spacing: 0.05em;
+  color: var(--vermilion-600);
+  background-color: transparent;
+  border: 1px solid var(--vermilion-400);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-vermilion-outline:hover {
+  background-color: var(--vermilion-50);
+  border-color: var(--vermilion-600);
+}
+
+/* ========================================
+   INK-WASH CARDS
+   ======================================== */
+.card-ink {
+  background-color: var(--paper-50);
+  border: 1px solid var(--paper-400);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(10, 10, 10, 0.04);
+}
+
+.card-ink-elevated {
+  background-color: var(--paper-50);
+  border: 1px solid var(--paper-300);
+  border-radius: 4px;
+  box-shadow:
+    0 4px 6px rgba(10, 10, 10, 0.03),
+    0 2px 4px rgba(10, 10, 10, 0.05);
+}
+
+.card-ink-bordered {
+  background-color: var(--paper-50);
+  border: 2px solid var(--ink-200);
+  border-radius: 2px;
+}
+
+/* Traditional scroll/card style */
+.card-scroll {
+  background-color: var(--paper-100);
+  border-left: 3px solid var(--ink-400);
+  border-right: 3px solid var(--ink-400);
+  padding: 1.5rem;
+}
+
+/* ========================================
+   INK-WASH INPUTS
+   ======================================== */
+.input-ink {
+  display: block;
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.9375rem;
+  color: var(--ink-800);
+  background-color: var(--paper-50);
+  border: 1px solid var(--paper-400);
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.input-ink::placeholder {
+  color: var(--ink-300);
+}
+
+.input-ink:focus {
+  outline: none;
+  border-color: var(--ink-400);
+  box-shadow: 0 0 0 2px rgba(64, 64, 64, 0.08);
+}
+
+.input-ink-underline {
+  display: block;
+  width: 100%;
+  padding: 0.625rem 0;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.9375rem;
+  color: var(--ink-800);
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--ink-300);
+  transition: all 0.2s ease;
+}
+
+.input-ink-underline:focus {
+  outline: none;
+  border-bottom-color: var(--ink-600);
+}
+
+/* ========================================
+   INK-WASH DIVIDERS
+   ======================================== */
+.divider-ink {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--ink-200) 20%,
+    var(--ink-300) 50%,
+    var(--ink-200) 80%,
+    transparent 100%
+  );
+}
+
+.divider-ink-thick {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--ink-400) 20%,
+    var(--ink-500) 50%,
+    var(--ink-400) 80%,
+    transparent 100%
+  );
+}
+
+/* Traditional double line divider */
+.divider-double {
+  height: 3px;
+  border-top: 1px solid var(--ink-300);
+  border-bottom: 1px solid var(--ink-300);
+}
+
+/* ========================================
+   SEAL/STAMP STYLE
+   ======================================== */
+.seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.375rem 0.75rem;
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--vermilion-600);
+  background-color: var(--vermilion-50);
+  border: 2px solid var(--vermilion-600);
+  border-radius: 4px;
+  letter-spacing: 0.1em;
+}
+
+.seal-filled {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.375rem 0.75rem;
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--paper-100);
+  background-color: var(--vermilion-600);
+  border: 2px solid var(--vermilion-600);
+  border-radius: 4px;
+  letter-spacing: 0.1em;
+}
+
+
+
+/* ========================================
+   INCENSE LIGHTING ANIMATION (上香动画)
+   ======================================== */
+
+.incense-container {
+  position: relative;
+  width: 120px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+
+/* Incense Base (香炉) */
+.incense-base {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.incense-base-top {
+  width: 48px;
+  height: 8px;
+  background: linear-gradient(
+    180deg,
+    var(--ink-400) 0%,
+    var(--ink-500) 100%
+  );
+  border-radius: 2px 2px 0 0;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.incense-base-body {
+  width: 40px;
+  height: 24px;
+  background: linear-gradient(
+    180deg,
+    var(--ink-500) 0%,
+    var(--ink-600) 50%,
+    var(--ink-700) 100%
+  );
+  border-radius: 0 0 8px 8px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Incense Sticks */
+.incense-sticks {
+  position: absolute;
+  bottom: 44px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0;
+}
+
+.incense-stick {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Positioning for different counts */
+.incense-stick-pos-0 {
+  transform: translateX(0) rotate(-2deg);
+}
+
+.incense-stick-pos-1 {
+  transform: translateX(0) rotate(2deg);
+}
+
+.incense-stick-triple.incense-stick-pos-0 {
+  transform: translateX(-12px) rotate(-4deg);
+}
+
+.incense-stick-triple.incense-stick-pos-1 {
+  transform: translateX(0) rotate(0deg);
+}
+
+.incense-stick-triple.incense-stick-pos-2 {
+  transform: translateX(12px) rotate(4deg);
+}
+
+.stick-body {
+  width: 4px;
+  height: 100px;
+  background: linear-gradient(
+    90deg,
+    var(--vermilion-700) 0%,
+    var(--vermilion-600) 30%,
+    var(--vermilion-500) 50%,
+    var(--vermilion-600) 70%,
+    var(--vermilion-700) 100%
+  );
+  border-radius: 2px;
+  box-shadow:
+    inset 1px 0 2px rgba(0, 0, 0, 0.2),
+    inset -1px 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.stick-tip {
+  position: relative;
+  width: 6px;
+  height: 8px;
+  margin-bottom: -2px;
+}
+
+.ash-layer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(
+    180deg,
+    var(--ink-400) 0%,
+    var(--ink-500) 100%
+  );
+  border-radius: 50% 50% 40% 40%;
+}
+
+/* Flame Animation */
+.flame-container {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 20px;
+}
+
+.flame {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform-origin: center bottom;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+.flame-inner {
+  width: 6px;
+  height: 14px;
+  margin-left: -3px;
+  background: linear-gradient(
+    180deg,
+    #fff5e6 0%,
+    #ffd700 30%,
+    #ff8c00 70%,
+    #ff4500 100%
+  );
+  animation: incense-flicker 0.15s ease-in-out infinite alternate;
+  opacity: 0.95;
+  filter: blur(0.5px);
+}
+
+.flame-outer {
+  width: 10px;
+  height: 18px;
+  margin-left: -5px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 215, 0, 0.6) 0%,
+    rgba(255, 140, 0, 0.4) 50%,
+    rgba(255, 69, 0, 0.2) 100%
+  );
+  animation: incense-flicker 0.2s ease-in-out infinite alternate-reverse;
+  filter: blur(1px);
+}
+
+.flame-core {
+  width: 3px;
+  height: 8px;
+  margin-left: -1.5px;
+  background: #ffffff;
+  animation: incense-flicker 0.1s ease-in-out infinite alternate;
+  opacity: 0.9;
+}
+
+@keyframes incense-flicker {
+  0% {
+    transform: scaleY(1) scaleX(1) translateY(0);
+    opacity: 0.95;
+  }
+  25% {
+    transform: scaleY(1.05) scaleX(0.95) translateY(-1px);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleY(0.95) scaleX(1.02) translateY(0);
+    opacity: 0.9;
+  }
+  75% {
+    transform: scaleY(1.03) scaleX(0.98) translateY(-0.5px);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scaleY(0.98) scaleX(1.01) translateY(0);
+    opacity: 0.92;
+  }
+}
+
+/* Smoke Particles */
+.smoke-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.smoke-particle {
+  position: absolute;
+  bottom: 140px;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(128, 128, 128, 0.4) 0%,
+    rgba(128, 128, 128, 0.2) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: smoke-rise 4s ease-out infinite;
+  opacity: 0;
+}
+
+.smoke-particle-1 {
+  margin-left: -8px;
+  animation-delay: 0s;
+  width: 16px;
+  height: 16px;
+}
+
+.smoke-particle-2 {
+  margin-left: 4px;
+  animation-delay: 0.5s;
+  width: 20px;
+  height: 20px;
+}
+
+.smoke-particle-3 {
+  margin-left: -4px;
+  animation-delay: 1s;
+  width: 14px;
+  height: 14px;
+}
+
+.smoke-particle-4 {
+  margin-left: 2px;
+  animation-delay: 1.5s;
+  width: 18px;
+  height: 18px;
+}
+
+.smoke-particle-5 {
+  margin-left: -6px;
+  animation-delay: 2s;
+  width: 15px;
+  height: 15px;
+}
+
+.smoke-particle-6 {
+  margin-left: 6px;
+  animation-delay: 2.5s;
+  width: 22px;
+  height: 22px;
+}
+
+.smoke-particle-7 {
+  margin-left: -2px;
+  animation-delay: 3s;
+  width: 17px;
+  height: 17px;
+}
+
+.smoke-particle-8 {
+  margin-left: 0px;
+  animation-delay: 3.5s;
+  width: 19px;
+  height: 19px;
+}
+
+@keyframes smoke-rise {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateY(-30px) translateX(5px) scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-60px) translateX(-3px) scale(1);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translateY(-90px) translateX(8px) scale(1.2);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-120px) translateX(-5px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Burning Glow Effect */
+.burning-glow {
+  position: absolute;
+  bottom: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 140, 0, 0.3) 0%,
+    rgba(255, 69, 0, 0.15) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: glow-pulse 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 8;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .flame-inner,
+  .flame-outer,
+  .flame-core {
+    animation: none;
+  }
+
+  .smoke-particle {
+    animation: none;
+    opacity: 0.3;
+    transform: translateY(-60px) scale(1);
+  }
+
+  .burning-glow {
+    animation: none;
+    opacity: 0.7;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .incense-container {
+    width: 100px;
+    height: 160px;
+  }
+
+  .stick-body {
+    height: 80px;
+  }
+
+  .smoke-particle {
+    bottom: 120px;
+  }
+
+  .burning-glow {
+    bottom: 110px;
+  }
+
+  @keyframes smoke-rise {
+    0% {
+      transform: translateY(0) translateX(0) scale(0.5);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(-80px) translateX(-3px) scale(1.3);
+      opacity: 0;
+    }
+  }
+}
+
+/* ========================================
+   OFFERING ANIMATION (供奉动画)
+   ======================================== */
+
+.offering-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 2rem 1rem;
+  margin: 0 auto;
+}
+
+/* Altar/Table Surface */
+.offering-altar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  z-index: 1;
+}
+
+.altar-surface {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    var(--vermilion-700) 0%,
+    var(--vermilion-800) 30%,
+    var(--vermilion-900) 100%
+  );
+  border-radius: 8px 8px 0 0;
+  box-shadow:
+    0 -2px 8px rgba(124, 45, 26, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+/* Offering Grid Layouts */
+.offering-grid {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1rem;
+  padding-bottom: 40px;
+  width: 100%;
+}
+
+.offering-grid-single {
+  justify-content: center;
+}
+
+.offering-grid-double {
+  justify-content: center;
+  gap: 2rem;
+}
+
+.offering-grid-triple {
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.offering-grid-quad {
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  max-width: 320px;
+}
+
+.offering-grid-five {
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  max-width: 400px;
+}
+
+/* Individual Offering Item */
+.offering-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 80px;
+  height: 100px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.offering-item:hover {
+  transform: translateY(-4px);
+}
+
+.offering-item:focus {
+  outline: 2px solid var(--vermilion-400);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+.offering-item:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Slide-in Animation */
+.offering-item-animate {
+  opacity: 0;
+  transform: translateY(60px);
+  animation: offering-slide-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes offering-slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Offering Plate */
+.offering-plate {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 72px;
+  height: 20px;
+  z-index: 1;
+}
+
+.plate-inner {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    #e8e8e8 0%,
+    #d0d0d0 50%,
+    #b8b8b8 100%
+  );
+  border-radius: 50%;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Offering Icon */
+.offering-icon {
+  position: relative;
+  z-index: 5;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 8px;
+  transition: transform 0.3s ease;
+}
+
+.offering-item:hover .offering-icon {
+  transform: scale(1.08) translateY(-2px);
+}
+
+.offering-icon-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Offering Label */
+.offering-label {
+  position: relative;
+  z-index: 10;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--paper-100);
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  margin-top: 4px;
+}
+
+/* Glow Effect */
+.offering-glow {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 215, 0, 0.2) 0%,
+    rgba(255, 215, 0, 0.1) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: offering-glow-pulse 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes offering-glow-pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+/* Empty State */
+.offering-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  color: var(--ink-400);
+  text-align: center;
+}
+
+.offering-empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+}
+
+.offering-empty-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.9375rem;
+  color: var(--ink-500);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .offering-item-animate {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .offering-glow {
+    animation: none;
+    opacity: 0.6;
+  }
+
+  .offering-item:hover {
+    transform: none;
+  }
+
+  .offering-item:hover .offering-icon {
+    transform: none;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .offering-container {
+    min-height: 240px;
+    padding: 1.5rem 0.75rem;
+  }
+
+  .offering-grid-quad,
+  .offering-grid-five {
+    max-width: 280px;
+  }
+
+  .offering-item {
+    width: 64px;
+    height: 84px;
+  }
+
+  .offering-plate {
+    width: 56px;
+    height: 16px;
+  }
+
+  .offering-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .offering-label {
+    font-size: 0.7rem;
+  }
+
+  .offering-glow {
+    width: 48px;
+    height: 48px;
+    bottom: 16px;
+  }
+
+  .offering-grid-triple {
+    gap: 1rem;
+  }
+
+  .offering-grid-quad,
+  .offering-grid-five {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .offering-item {
+    width: 56px;
+    height: 76px;
+  }
+
+  .offering-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .offering-plate {
+    width: 48px;
+    height: 14px;
+  }
+
+  .offering-label {
+    font-size: 0.65rem;
+  }
+}
+
+
+/* ========================================
+   BOWING ANIMATION (跪拜/作揖动画)
+   ======================================== */
+
+.bowing-container {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 2rem 1rem;
+  margin: 0 auto;
+}
+
+/* Kneeling Mat/Cushion */
+.bowing-mat {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 60px;
+  z-index: 1;
+}
+
+.mat-surface {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    var(--paper-300) 0%,
+    var(--paper-400) 50%,
+    var(--paper-500) 100%
+  );
+  border-radius: 50% 50% 8px 8px;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Character Container */
+.bowing-character {
+  position: relative;
+  z-index: 10;
+  width: 200px;
+  height: 240px;
+  transition: transform 0.6s cubic-bezier(0.34, 0.615, 0.4, 0.985);
+}
+
+.character-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Kowtow Animation States */
+.bowing-kowtow.bowing-state-bowing {
+  animation: kowtow-bow 0.8s ease-in-out forwards;
+}
+
+.bowing-kowtow.bowing-state-rising {
+  animation: kowtow-rise 0.6s ease-out forwards;
+}
+
+@keyframes kowtow-bow {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  30% {
+    transform: translateY(10px) rotate(2deg);
+  }
+  100% {
+    transform: translateY(45px) rotate(5deg);
+  }
+}
+
+@keyframes kowtow-rise {
+  0% {
+    transform: translateY(45px) rotate(5deg);
+  }
+  70% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* Kowtow head bowing animation */
+.bowing-kowtow.bowing-state-bowing .kowtow-head {
+  animation: kowtow-head-bow 0.8s ease-in-out forwards;
+}
+
+.bowing-kowtow.bowing-state-rising .kowtow-head {
+  animation: kowtow-head-rise 0.6s ease-out forwards;
+}
+
+@keyframes kowtow-head-bow {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(15px) rotate(8deg);
+  }
+  100% {
+    transform: translateY(35px) rotate(12deg);
+  }
+}
+
+@keyframes kowtow-head-rise {
+  0% {
+    transform: translateY(35px) rotate(12deg);
+  }
+  60% {
+    transform: translateY(-8px) rotate(-3deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* Clasping Animation States */
+.bowing-clasping.bowing-state-bowing {
+  animation: clasping-bow 0.6s ease-in-out forwards;
+}
+
+.bowing-clasping.bowing-state-rising {
+  animation: clasping-rise 0.5s ease-out forwards;
+}
+
+@keyframes clasping-bow {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(15px) rotate(3deg);
+  }
+  100% {
+    transform: translateY(25px) rotate(5deg);
+  }
+}
+
+@keyframes clasping-rise {
+  0% {
+    transform: translateY(25px) rotate(5deg);
+  }
+  60% {
+    transform: translateY(-3px) rotate(-1deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* Clasping head bowing animation */
+.bowing-clasping.bowing-state-bowing .clasping-head {
+  animation: clasping-head-bow 0.6s ease-in-out forwards;
+}
+
+.bowing-clasping.bowing-state-rising .clasping-head {
+  animation: clasping-head-rise 0.5s ease-out forwards;
+}
+
+@keyframes clasping-head-bow {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(8px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(18px) rotate(8deg);
+  }
+}
+
+@keyframes clasping-head-rise {
+  0% {
+    transform: translateY(18px) rotate(8deg);
+  }
+  60% {
+    transform: translateY(-5px) rotate(-2deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* Clasping hands animation */
+.bowing-clasping.bowing-state-bowing .clasping-hands {
+  animation: clasping-hands-bow 0.6s ease-in-out forwards;
+}
+
+.bowing-clasping.bowing-state-rising .clasping-hands {
+  animation: clasping-hands-rise 0.5s ease-out forwards;
+}
+
+@keyframes clasping-hands-bow {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes clasping-hands-rise {
+  0% {
+    transform: translateY(8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Progress Indicator */
+.bowing-progress {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 20;
+}
+
+.progress-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink-700);
+  letter-spacing: 0.05em;
+}
+
+.progress-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--paper-400);
+  transition: all 0.3s ease;
+}
+
+.progress-dot.completed {
+  background-color: var(--vermilion-600);
+  transform: scale(1.1);
+}
+
+.progress-dot.active {
+  background-color: var(--vermilion-400);
+  animation: progress-pulse 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes progress-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+}
+
+/* Complete Badge */
+.bowing-complete-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--vermilion-50);
+  border: 1px solid var(--vermilion-400);
+  border-radius: 4px;
+}
+
+.complete-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--vermilion-700);
+  letter-spacing: 0.05em;
+}
+
+/* Control Panel */
+.bowing-control {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: var(--paper-50);
+  border: 1px solid var(--paper-400);
+  border-radius: 8px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.control-group {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.control-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-700);
+  background-color: var(--paper-100);
+  border: 1px solid var(--ink-300);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.control-btn:hover:not(:disabled) {
+  background-color: var(--paper-200);
+  border-color: var(--ink-400);
+}
+
+.control-btn.active {
+  background-color: var(--vermilion-50);
+  border-color: var(--vermilion-600);
+  color: var(--vermilion-700);
+}
+
+.control-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn.btn-primary {
+  color: var(--paper-100);
+  background-color: var(--vermilion-600);
+  border: 1px solid var(--vermilion-700);
+}
+
+.action-btn.btn-primary:hover:not(:disabled) {
+  background-color: var(--vermilion-700);
+  box-shadow: 0 2px 4px rgba(194, 59, 34, 0.25);
+}
+
+.action-btn.btn-secondary {
+  color: var(--ink-700);
+  background-color: transparent;
+  border: 1px solid var(--ink-400);
+}
+
+.action-btn.btn-secondary:hover:not(:disabled) {
+  background-color: var(--paper-200);
+  border-color: var(--ink-500);
+}
+
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-icon {
+  font-size: 1rem;
+}
+
+.btn-text {
+  white-space: nowrap;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .bowing-character,
+  .bowing-kowtow.bowing-state-bowing,
+  .bowing-kowtow.bowing-state-rising,
+  .bowing-clasping.bowing-state-bowing,
+  .bowing-clasping.bowing-state-rising {
+    animation: none;
+    transform: none;
+  }
+
+  .bowing-kowtow.bowing-state-bowing .kowtow-head,
+  .bowing-kowtow.bowing-state-rising .kowtow-head,
+  .bowing-clasping.bowing-state-bowing .clasping-head,
+  .bowing-clasping.bowing-state-rising .clasping-head {
+    animation: none;
+    transform: none;
+  }
+
+  .progress-dot.active {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .bowing-container {
+    max-width: 240px;
+    min-height: 280px;
+    padding: 1.5rem 0.75rem;
+  }
+
+  .bowing-character {
+    width: 160px;
+    height: 192px;
+  }
+
+  .bowing-mat {
+    width: 140px;
+    height: 50px;
+  }
+
+  .bowing-control {
+    padding: 1rem;
+    max-width: 280px;
+  }
+
+  .control-group {
+    flex-wrap: wrap;
+  }
+
+  .control-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .action-btn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .progress-text {
+    font-size: 0.8rem;
+  }
+
+  .complete-text {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .bowing-character {
+    width: 140px;
+    height: 168px;
+  }
+
+  .bowing-mat {
+    width: 120px;
+    height: 45px;
+  }
+
+  .control-group.type-selection {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .control-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* ========================================
+   PAPER MONEY BURNING ANIMATION (烧纸钱动画)
+   ======================================== */
+
+.paper-money-container {
+  position: relative;
+  width: 200px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+  margin: 0 auto;
+}
+
+/* Burning Aura Effect */
+.burning-aura {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 140, 0, 0.2) 0%,
+    rgba(255, 69, 0, 0.1) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: aura-pulse 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes aura-pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+/* Brazier/Fire Pit */
+.brazier-base {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brazier-rim {
+  width: 120px;
+  height: 12px;
+  background: linear-gradient(
+    180deg,
+    var(--ink-400) 0%,
+    var(--ink-500) 50%,
+    var(--ink-600) 100%
+  );
+  border-radius: 50%;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.brazier-rim::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 10px;
+  right: 10px;
+  height: 6px;
+  background: linear-gradient(
+    180deg,
+    var(--ink-600) 0%,
+    var(--ink-700) 100%
+  );
+  border-radius: 50%;
+}
+
+.brazier-body {
+  width: 100px;
+  height: 50px;
+  background: linear-gradient(
+    180deg,
+    var(--ink-500) 0%,
+    var(--ink-600) 30%,
+    var(--ink-700) 60%,
+    var(--ink-800) 100%
+  );
+  border-radius: 0 0 12px 12px;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    inset 0 2px 4px rgba(255, 255, 255, 0.05);
+}
+
+.brazier-feet {
+  display: flex;
+  gap: 40px;
+  margin-top: -5px;
+}
+
+.brazier-foot {
+  width: 12px;
+  height: 16px;
+  background: linear-gradient(
+    180deg,
+    var(--ink-600) 0%,
+    var(--ink-700) 100%
+  );
+  border-radius: 0 0 4px 4px;
+}
+
+/* Paper Money Stacks */
+.paper-money-stacks {
+  position: absolute;
+  bottom: 60px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+  z-index: 15;
+}
+
+.paper-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  transition: opacity 0.5s ease;
+}
+
+.paper-bar {
+  width: 56px;
+  height: 32px;
+  background: linear-gradient(
+    135deg,
+    #ffd700 0%,
+    #ffed4a 20%,
+    #ffd700 50%,
+    #daa520 100%
+  );
+  border-radius: 4px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #daa520;
+}
+
+.paper-silver {
+  background: linear-gradient(
+    135deg,
+    #e8e8e8 0%,
+    #f5f5f5 20%,
+    #e0e0e0 50%,
+    #c0c0c0 100%
+  );
+  border-color: #a0a0a0;
+}
+
+.paper-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.paper-emboss {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  border: 1px solid rgba(184, 134, 11, 0.3);
+  border-radius: 2px;
+}
+
+.paper-silver .paper-emboss {
+  border-color: rgba(128, 128, 128, 0.3);
+}
+
+.paper-pattern {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paper-character {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #b8860b;
+  letter-spacing: 0.1em;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.paper-silver .paper-character {
+  color: #666;
+}
+
+/* Paper Burning Animation */
+.paper-animated {
+  animation: paper-flicker 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes paper-flicker {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0.85;
+    transform: scale(0.98) rotate(0.5deg);
+  }
+}
+
+.paper-stack-burning {
+  animation: stack-shrink 3s ease-in forwards;
+}
+
+@keyframes stack-shrink {
+  0% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0.7);
+  }
+}
+
+/* Flames */
+.paper-flames {
+  position: absolute;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  pointer-events: none;
+}
+
+.flame-base {
+  position: relative;
+  width: 80px;
+  height: 60px;
+}
+
+.flame-side {
+  position: absolute;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.flame-left {
+  left: -30px;
+}
+
+.flame-right {
+  right: -30px;
+}
+
+.flame-core {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 35px;
+  background: linear-gradient(
+    180deg,
+    #fff5e6 0%,
+    #ffd700 20%,
+    #ff8c00 60%,
+    #ff4500 100%
+  );
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: flame-core-flicker 0.1s ease-in-out infinite alternate;
+  z-index: 3;
+}
+
+.flame-inner {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 215, 0, 0.8) 0%,
+    rgba(255, 140, 0, 0.6) 50%,
+    rgba(255, 69, 0, 0.3) 100%
+  );
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: flame-inner-flicker 0.15s ease-in-out infinite alternate;
+  z-index: 2;
+}
+
+.flame-outer {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 55px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 140, 0, 0.5) 0%,
+    rgba(255, 69, 0, 0.3) 40%,
+    rgba(255, 0, 0, 0.1) 100%
+  );
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: flame-outer-flicker 0.2s ease-in-out infinite alternate-reverse;
+  z-index: 1;
+  filter: blur(2px);
+}
+
+.flame-tips {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 25px solid rgba(255, 69, 0, 0.4);
+  animation: flame-tips-flicker 0.12s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+.flame-dying {
+  animation: flame-extinguish 0.8s ease-out forwards;
+}
+
+@keyframes flame-core-flicker {
+  0% {
+    transform: translateX(-50%) scaleY(1) scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) scaleY(1.1) scaleX(0.95);
+    opacity: 0.9;
+  }
+}
+
+@keyframes flame-inner-flicker {
+  0% {
+    transform: translateX(-50%) scaleY(1) scaleX(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(-50%) scaleY(1.08) scaleX(0.92);
+    opacity: 0.95;
+  }
+}
+
+@keyframes flame-outer-flicker {
+  0% {
+    transform: translateX(-50%) scaleY(1) scaleX(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(-50%) scaleY(1.05) scaleX(0.95);
+    opacity: 0.65;
+  }
+}
+
+@keyframes flame-tips-flicker {
+  0% {
+    transform: translateX(-50%) scaleY(1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateX(-50%) scaleY(1.2);
+    opacity: 0.6;
+  }
+}
+
+@keyframes flame-extinguish {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.5);
+  }
+}
+
+/* Ash Particles */
+.ash-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 25;
+}
+
+.ash-particle {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(
+    135deg,
+    #ffd700 0%,
+    #daa520 100%
+  );
+  border-radius: 2px;
+  opacity: 0;
+  animation: ash-rise 3s ease-out infinite;
+}
+
+.ash-silver {
+  background: linear-gradient(
+    135deg,
+    #e8e8e8 0%,
+    #c0c0c0 100%
+  );
+}
+
+.ash-particle-1 {
+  margin-left: -20px;
+  animation-delay: 0s;
+}
+
+.ash-particle-2 {
+  margin-left: 10px;
+  animation-delay: 0.4s;
+}
+
+.ash-particle-3 {
+  margin-left: -5px;
+  animation-delay: 0.8s;
+}
+
+.ash-particle-4 {
+  margin-left: 15px;
+  animation-delay: 1.2s;
+}
+
+.ash-particle-5 {
+  margin-left: -15px;
+  animation-delay: 1.6s;
+}
+
+.ash-particle-6 {
+  margin-left: 5px;
+  animation-delay: 2s;
+}
+
+.ash-particle-7 {
+  margin-left: -10px;
+  animation-delay: 2.4s;
+}
+
+.ash-particle-8 {
+  margin-left: 20px;
+  animation-delay: 2.8s;
+}
+
+@keyframes ash-rise {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  25% {
+    transform: translateY(-40px) translateX(10px) rotate(45deg) scale(0.9);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-80px) translateX(-5px) rotate(90deg) scale(0.7);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateY(-120px) translateX(15px) rotate(135deg) scale(0.5);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-160px) translateX(-10px) rotate(180deg) scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* Smoke Layer */
+.paper-smoke-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 18;
+}
+
+.paper-smoke {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(128, 128, 128, 0.3) 0%,
+    rgba(128, 128, 128, 0.15) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  opacity: 0;
+  animation: paper-smoke-rise 5s ease-out infinite;
+}
+
+.smoke-1 {
+  margin-left: -10px;
+  animation-delay: 0s;
+}
+
+.smoke-2 {
+  margin-left: 15px;
+  animation-delay: 1s;
+}
+
+.smoke-3 {
+  margin-left: -5px;
+  animation-delay: 2s;
+}
+
+.smoke-4 {
+  margin-left: 10px;
+  animation-delay: 3s;
+}
+
+.smoke-5 {
+  margin-left: -15px;
+  animation-delay: 4s;
+}
+
+@keyframes paper-smoke-rise {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  25% {
+    transform: translateY(-50px) translateX(10px) scale(0.8);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-100px) translateX(-5px) scale(1);
+    opacity: 0.3;
+  }
+  75% {
+    transform: translateY(-150px) translateX(15px) scale(1.2);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-200px) translateX(0) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Spark Particles */
+.spark-layer {
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  pointer-events: none;
+  z-index: 22;
+}
+
+.spark-particle {
+  position: absolute;
+  bottom: 0;
+  width: 3px;
+  height: 3px;
+  background: #ffd700;
+  border-radius: 50%;
+  opacity: 0;
+  animation: spark-fly 1.5s ease-out infinite;
+  box-shadow: 0 0 4px #ff8c00;
+}
+
+@keyframes spark-fly {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100px) translateX(var(--spark-drift, 20px)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Status Text */
+.burning-status {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 30;
+}
+
+.status-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink-600);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .burning-aura {
+    animation: none;
+    opacity: 0.6;
+  }
+
+  .paper-animated {
+    animation: none;
+    opacity: 0.8;
+  }
+
+  .paper-stack-burning {
+    animation: none;
+    transform: scaleY(0.8);
+  }
+
+  .flame-core,
+  .flame-inner,
+  .flame-outer,
+  .flame-tips {
+    animation: none;
+    opacity: 0.7;
+  }
+
+  .ash-particle {
+    animation: none;
+    opacity: 0;
+  }
+
+  .paper-smoke {
+    animation: none;
+    opacity: 0.2;
+    transform: translateY(-60px);
+  }
+
+  .spark-particle {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .paper-money-container {
+    width: 160px;
+    height: 220px;
+  }
+
+  .brazier-rim {
+    width: 100px;
+    height: 10px;
+  }
+
+  .brazier-body {
+    width: 80px;
+    height: 40px;
+  }
+
+  .brazier-feet {
+    gap: 30px;
+  }
+
+  .brazier-foot {
+    width: 10px;
+    height: 12px;
+  }
+
+  .paper-bar {
+    width: 44px;
+    height: 26px;
+  }
+
+  .paper-character {
+    font-size: 11px;
+  }
+
+  .flame-base {
+    width: 60px;
+    height: 45px;
+  }
+
+  .flame-core {
+    width: 15px;
+    height: 28px;
+  }
+
+  .flame-inner {
+    width: 38px;
+    height: 38px;
+  }
+
+  .flame-outer {
+    width: 55px;
+    height: 42px;
+  }
+
+  .burning-aura {
+    width: 140px;
+    height: 140px;
+  }
+
+  .paper-money-stacks {
+    bottom: 50px;
+  }
+
+  .paper-flames {
+    bottom: 55px;
+  }
+
+  .ash-particle {
+    width: 6px;
+    height: 6px;
+  }
+
+  .status-text {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .paper-money-container {
+    width: 140px;
+    height: 200px;
+  }
+
+  .paper-bar {
+    width: 38px;
+    height: 22px;
+  }
+
+  .paper-character {
+    font-size: 10px;
+  }
+
+  .status-text {
+    font-size: 0.75rem;
+  }
+}
+/* ========================================
+   RESPONSIVE UTILITIES
+   ======================================== */
+
+/* Touch manipulation for better mobile scrolling */
+.touch-manipulation {
+  touch-action: manipulation;
+}
+
+/* Prevent text selection on interactive elements */
+.touch-none {
+  touch-action: none;
+}
+
+/* Smooth scrolling for horizontal scroll containers */
+.scroll-smooth-x {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Thin scrollbar styling */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ink-300) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: var(--ink-300);
+  border-radius: 2px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ink-400);
+}
+
+/* Safe area insets for notched devices */
+.h-safe-area-inset-bottom {
+  height: env(safe-area-inset-bottom, 0px);
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Mobile tap highlight color */
+.tap-highlight-transparent {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Text truncation utilities */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Responsive typography scale */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+/* Prevent horizontal overflow on mobile */
+@media (max-width: 640px) {
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Enhanced mobile button touch targets */
+@media (max-width: 640px) {
+  .btn-ink,
+  .btn-ink-outline,
+  .btn-vermilion,
+  .btn-vermilion-outline {
+    min-height: 2.75rem;
+    padding: 0.625rem 1.25rem;
+  }
+}
+
+/* Mobile form input improvements */
+@media (max-width: 640px) {
+  .input-ink,
+  .input-ink-underline {
+    min-height: 2.75rem;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Card improvements for mobile */
+@media (max-width: 640px) {
+  .card-ink,
+  .card-ink-elevated,
+  .card-ink-bordered {
+    border-radius: 6px;
+  }
+}
+
+/* Timeline mobile optimizations */
+@media (max-width: 640px) {
+  .timeline-container {
+    padding-left: 3rem;
+  }
+  
+  .timeline-line {
+    left: 1.5rem;
+  }
+  
+  .timeline-node {
+    left: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+/* ========================================
+   SHIMMER LOADING ANIMATION (闪烁加载动画)
+   ======================================== */
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Image placeholder with ink-wash styling */
+.image-placeholder {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--paper-200);
+}
+
+.image-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  animation: shimmer 2s infinite;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(248, 244, 233, 0.5) 50%,
+    transparent 100%
+  );
+}
+
+/* Reduced motion support for shimmer */
+@media (prefers-reduced-motion: reduce) {
+  .image-placeholder::before {
+    animation: none;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(248, 244, 233, 0.3) 50%,
+      transparent 100%
+    );
+  }
+}

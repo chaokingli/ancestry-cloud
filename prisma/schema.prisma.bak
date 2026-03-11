@@ -1,0 +1,131 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+datasource db {
+  provider = "sqlite"
+}
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  role          UserRole  @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  familyMembers FamilyMember[]
+  worshipRecords WorshipRecord[]
+  activities    Activity[]
+  invitations   Invitation[]
+}
+
+enum UserRole {
+  ADMIN
+  EDITOR
+  VIEWER
+  USER
+}
+
+  name        String
+  description String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  members     FamilyMember[]
+  ancestors   Ancestor[]
+  photos      Photo[]
+  activities  Activity[]
+  invitations Invitation[]
+}
+
+model FamilyMember {
+  id        String   @id @default(cuid())
+  userId    String
+  familyId  String
+  role      UserRole @default(USER)
+  createdAt DateTime @default(now())
+  
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  family   Family   @relation(fields: [familyId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, familyId])
+}
+
+model Ancestor {
+  id          String   @id @default(cuid())
+  familyId    String
+  firstName   String
+  lastName    String?
+  gender      String
+  birthDate   DateTime?
+  birthPlace  String?
+  deathPlace  String?
+  bio         String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  family      Family   @relation(fields: [familyId], references: [id], onDelete: Cascade)
+  photos      Photo[]
+  eulogies    Eulogy[]
+  activities  Activity[]
+}
+
+model Photo {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  imageUrl    String
+  uploadedAt  DateTime @default(now())
+  uploaderId  String
+  ancestor  Ancestor?  @relation(fields: [ancestorId], references: [id], onDelete: SetNull)
+  family    Family?    @relation(fields: [familyId], references: [id], onDelete: Cascade)
+  uploader  User       @relation(fields: [uploaderId], references: [id], onDelete: Cascade)
+  
+  @@unique([ancestorId, title])
+}
+
+model Eulogy {
+  ancestorId  String
+  content     String
+  isTemplate  Boolean  @default(false)
+  templateName String?  @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  authorId    String
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+}
+model WorshipRecord {
+  id          String   @id @default(cuid())
+  ancestorId  String
+  worshipType String
+  notes       String?
+  creatorId   String
+  
+  ancestor Ancestor @relation(fields: [ancestorId], references: [id], onDelete: Cascade)
+  family   Family   @relation(fields: [familyId], references: [id], onDelete: Cascade)
+  creator  User     @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+}
+
+model Activity {
+  id         String   @id @default(cuid())
+  itemName   String?
+  description String
+  createdAt  DateTime @default(now())
+  userId     String
+  
+  family Family @relation(fields: [familyId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Invitation {
+  id         String   @id @default(cuid())
+  familyId   String
+  email      String
+  role       UserRole @default(USER)
+  token      String   @unique
+  status     String   @default("pending")
+  sentAt     DateTime @default(now())
+  expiresAt  DateTime
+  claimedAt  DateTime?
+  inviterId  String
+  
+  family   Family @relation(fields: [familyId], references: [id], onDelete: Cascade)
+  inviter  User   @relation(fields: [inviterId], references: [id], onDelete: Cascade)
+}
