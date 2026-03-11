@@ -100,7 +100,16 @@ export default function FamiliesPage() {
         }
 
         const data = await res.json()
-        setFamilies(data.families || [])
+
+        // API returns Family[], but UI expects FamilyMember[]
+        const familyMembers = (data.families || []).map((f: Family) => ({
+          family: f,
+          // Prefer backend role if present, otherwise default to ADMIN
+          role: (f as any).role ?? "ADMIN",
+          joinedAt: f.createdAt,
+        }))
+
+        setFamilies(familyMembers)
       } catch (err) {
         console.error("Error fetching families:", err)
         setError("加载家族列表时出错，请稍后重试")
@@ -272,8 +281,15 @@ export default function FamiliesPage() {
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {families.map((familyMember) => {
                   const family = familyMember.family
+                  if (!family) return null
+
                   const roleConfig = roleLabels[familyMember.role]
-                  const RoleIcon = roleConfig.icon
+
+                  if (!roleConfig) {
+                    console.warn("Unknown role:", familyMember.role)
+                  }
+
+                  const RoleIcon = roleConfig?.icon ?? User
 
                   return (
                     <Link
